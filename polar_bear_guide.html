@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>POLAR BEAR - Comprehensive User & Technical Reference Guide</title>
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 18mm 16mm 20mm 16mm;
+    @bottom-right {
+      content: counter(page);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 9pt;
+      color: #526474;
+    }
+    @bottom-left {
+      content: "POLAR BEAR · Polar Science Intelligence & Discovery Platform";
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 8pt;
+      color: #526474;
+    }
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: #16232E;
+    background-color: #FFFFFF;
+    font-size: 10pt;
+    line-height: 1.55;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .cover-page {
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    justifyContent: space-between;
+    min-height: 250mm;
+    padding: 30mm 10mm 10mm 10mm;
+    border-bottom: 2px solid #0B1F33;
+  }
+
+  .cover-header {
+    border-left: 6px solid #2F6F95;
+    padding-left: 20px;
+  }
+
+  .cover-badge {
+    display: inline-block;
+    background-color: #0B1F33;
+    color: #FFFFFF;
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 4px 12px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .cover-title {
+    font-size: 34pt;
+    font-weight: 800;
+    color: #0B1F33;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+
+  .cover-subtitle {
+    font-size: 14pt;
+    font-weight: 600;
+    color: #2F6F95;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .cover-desc {
+    font-size: 11pt;
+    color: #526474;
+    max-width: 520px;
+    line-height: 1.6;
+  }
+
+  .cover-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    background-color: #F7FAFC;
+    border: 1px solid #D8E1E7;
+    padding: 16px 20px;
+    margin-top: 30mm;
+  }
+
+  .meta-item label {
+    display: block;
+    font-size: 8pt;
+    font-weight: 700;
+    color: #526474;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 2px;
+  }
+
+  .meta-item span {
+    font-size: 10pt;
+    font-weight: 600;
+    color: #0B1F33;
+    font-family: Consolas, 'Courier New', monospace;
+  }
+
+  .cover-footer {
+    border-top: 1px solid #D8E1E7;
+    padding-top: 14px;
+    font-size: 8.5pt;
+    color: #526474;
+    display: flex;
+    justifyContent: space-between;
+  }
+
+  /* Structural Content */
+  .page {
+    page-break-after: always;
+    padding-top: 5mm;
+  }
+
+  h1 {
+    font-size: 18pt;
+    font-weight: 700;
+    color: #0B1F33;
+    border-bottom: 2px solid #0B1F33;
+    padding-bottom: 6px;
+    margin-top: 20px;
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+
+  h2 {
+    font-size: 13pt;
+    font-weight: 700;
+    color: #123B5D;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    border-left: 3px solid #2F6F95;
+    padding-left: 8px;
+  }
+
+  h3 {
+    font-size: 11pt;
+    font-weight: 600;
+    color: #0B1F33;
+    margin-top: 12px;
+    margin-bottom: 6px;
+  }
+
+  p {
+    margin-bottom: 10px;
+    color: #16232E;
+  }
+
+  ul, ol {
+    margin-left: 20px;
+    margin-bottom: 12px;
+  }
+
+  li {
+    margin-bottom: 4px;
+  }
+
+  strong {
+    color: #0B1F33;
+  }
+
+  code {
+    font-family: Consolas, Menlo, Monaco, monospace;
+    font-size: 9pt;
+    background-color: #E8F1F5;
+    color: #123B5D;
+    padding: 1px 4px;
+    border-radius: 2px;
+  }
+
+  /* Callout Boxes */
+  .callout {
+    background-color: #F7FAFC;
+    border: 1px solid #D8E1E7;
+    border-left: 4px solid #2F6F95;
+    padding: 10px 14px;
+    margin: 12px 0;
+    font-size: 9.5pt;
+  }
+
+  .callout.alert {
+    background-color: #FDF2F2;
+    border-color: #F8B4B4;
+    border-left-color: #A82020;
+  }
+
+  .callout.verified {
+    background-color: #ECFDF5;
+    border-color: #A7F3D0;
+    border-left-color: #0B6B40;
+  }
+
+  .callout-title {
+    font-weight: 700;
+    font-size: 9.5pt;
+    color: #0B1F33;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 16px 0;
+    font-size: 9pt;
+  }
+
+  th {
+    background-color: #E8F1F5;
+    color: #0B1F33;
+    text-align: left;
+    font-weight: 700;
+    padding: 7px 10px;
+    border: 1px solid #D8E1E7;
+    font-size: 8.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  td {
+    padding: 7px 10px;
+    border: 1px solid #D8E1E7;
+    color: #16232E;
+    vertical-align: top;
+  }
+
+  tr:nth-child(even) td {
+    background-color: #F7FAFC;
+  }
+
+  /* Feature Grid Layout */
+  .feature-box {
+    border: 1px solid #D8E1E7;
+    background-color: #FFFFFF;
+    margin-bottom: 16px;
+    page-break-inside: avoid;
+  }
+
+  .feature-box-header {
+    background-color: #0B1F33;
+    color: #FFFFFF;
+    padding: 8px 14px;
+    display: flex;
+    justifyContent: space-between;
+    align-items: center;
+  }
+
+  .feature-box-title {
+    font-size: 11pt;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .feature-box-badge {
+    background-color: #2F6F95;
+    color: #FFFFFF;
+    font-size: 7.5pt;
+    font-weight: 700;
+    padding: 2px 8px;
+    text-transform: uppercase;
+    border-radius: 2px;
+  }
+
+  .feature-box-body {
+    padding: 12px 16px;
+  }
+
+  .feature-section {
+    margin-bottom: 10px;
+  }
+
+  .feature-section-label {
+    font-size: 8pt;
+    font-weight: 700;
+    color: #2F6F95;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 2px;
+  }
+
+  .step-list {
+    list-style: none;
+    margin-left: 0;
+    margin-top: 6px;
+  }
+
+  .step-list li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 5px;
+    font-size: 9.5pt;
+  }
+
+  .step-list li::before {
+    content: "•";
+    position: absolute;
+    left: 6px;
+    top: -1px;
+    font-weight: bold;
+    color: #2F6F95;
+    font-size: 12pt;
+  }
+
+  .tag {
+    display: inline-block;
+    background-color: #E8F1F5;
+    color: #123B5D;
+    font-size: 7.5pt;
+    font-weight: 600;
+    padding: 2px 6px;
+    border: 1px solid #D8E1E7;
+    border-radius: 2px;
+    margin-right: 4px;
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="cover-page">
+  <div class="cover-header">
+    <div class="cover-badge">Official Platform Documentation · Release 2026.4 LTS</div>
+    <div class="cover-title">POLAR BEAR</div>
+    <div class="cover-subtitle">Polar Science Intelligence & Discovery Platform</div>
+    <div class="cover-desc">
+      Comprehensive Operations Manual, Scientific Architecture Overview, Feature Catalog, and Practical Field Usage Guide for Arctic & Antarctic High-Latitude Research.
+    </div>
+  </div>
+
+  <div class="cover-meta-grid">
+    <div class="meta-item">
+      <label>Platform Classification</label>
+      <span>Geospatial Intelligence & FAIR Discovery</span>
+    </div>
+    <div class="meta-item">
+      <label>Compliance Standards</label>
+      <span>W3C PROV-O · CF-1.8 NetCDF-4 · ISO 19115</span>
+    </div>
+    <div class="meta-item">
+      <label>System Build</label>
+      <span>2026.4.19-LTS (Cryosphere Core)</span>
+    </div>
+    <div class="meta-item">
+      <label>Target Audience</label>
+      <span>Researchers, Data Managers, Educators, Field Leads</span>
+    </div>
+  </div>
+
+  <div class="cover-footer">
+    <span>© 2026 Polar Bear Scientific Consortium · Open Access Framework</span>
+    <span>Published: September 2026</span>
+  </div>
+</div>
+
+<!-- PAGE 1: EXECUTIVE SUMMARY & ARCHITECTURAL FOUNDATION -->
+<div class="page">
+  <h1>1. Executive Summary & Design System</h1>
+  
+  <h2>1.1 The High-Latitude Research Challenge</h2>
+  <p>
+    Polar research is historically fragmented across disconnected oceanographic institutes, national Antarctic programs, satellite data nodes, and independent sensor deployments. Scientists seeking to understand sea-ice decline, ice-shelf calving, or ocean warming have traditionally had to manually correlate literature citations with heterogeneous NetCDF repositories, expedition drift logs, and isolated automated weather station feeds.
+  </p>
+  <p>
+    <strong>POLAR BEAR</strong> solves this fragmentation by providing a unified, source-grounded intelligence ecosystem that connects <em>Expeditions</em>, <em>Researchers</em>, <em>Datasets</em>, <em>Publications</em>, <em>Research Stations</em>, and <em>Live Sensor Observations</em> into a single topological research platform.
+  </p>
+
+  <h2>1.2 Core Architectural Principles & Zero-Gradient Philosophy</h2>
+  <p>
+    Unlike conventional SaaS applications, POLAR BEAR is designed as an institutional scientific instrument. The visual presentation adheres to strict guidelines to ensure maximum data density, zero visual noise, and absolute clarity:
+  </p>
+  <ul>
+    <li><strong>Solid Institutional Palette (Strictly Zero Gradients):</strong> Deep Navy (<code>#0B1F33</code>), Dark Blue (<code>#123B5D</code>), Arctic Blue (<code>#2F6F95</code>), Ice White (<code>#F7FAFC</code>), White (<code>#FFFFFF</code>), Pale Ice (<code>#E8F1F5</code>), Dark Text (<code>#16232E</code>), Slate (<code>#526474</code>), and Border (<code>#D8E1E7</code>). No glowing or decorative gradients are permitted anywhere on the platform.</li>
+    <li><strong>Object-Oriented Cards Only:</strong> Cards are strictly prohibited as generic decorative containers. Cards only represent discrete scientific entities (such as an expedition, dataset, paper, station, researcher, or observation). All general content is organized through structured tables, lists, tabs, timelines, and split-screen workspaces.</li>
+    <li><strong>FAIR Data Principles:</strong> Every indexed dataset and publication adheres to Findable, Accessible, Interoperable, and Reusable standards, supported by persistent DataCite DOIs and W3C PROV-O cryptographic provenance tracking.</li>
+  </ul>
+
+  <div class="callout verified">
+    <div class="callout-title">Institutional Design Standard Compliance</div>
+    All typography uses a standardized Inter scale (H1: 36–42px, H2: 28px, H3: 20px, Body: 15px, Secondary: 14px, Metadata: 12px monospace). Navigation headers maintain a fixed 68px desktop height with strict <code>white-space: nowrap</code> preventing label wrapping across all viewports.
+  </div>
+
+  <h2>1.3 System Overview & Global Navigation Hierarchy</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Navigation Section</th>
+        <th style="width: 35%;">Classification</th>
+        <th style="width: 40%;">Primary Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Explore (Home)</strong></td>
+        <td>Executive Discovery Workspace</td>
+        <td>9-stage homepage providing immediate intelligence discovery across all pillars.</td>
+      </tr>
+      <tr>
+        <td><strong>Polar Map</strong></td>
+        <td>Primary Geospatial Workbench</td>
+        <td>Interactive stereographic projection map for Arctic & Antarctic data exploration.</td>
+      </tr>
+      <tr>
+        <td><strong>Research</strong></td>
+        <td>Peer-Reviewed Literature</td>
+        <td>Indexed polar research papers with automated multi-language abstract translations.</td>
+      </tr>
+      <tr>
+        <td><strong>Data</strong></td>
+        <td>Scientific Datasets Repository</td>
+        <td>Open-access NetCDF-4 time-series, grids, and mooring archives with DOI access.</td>
+      </tr>
+      <tr>
+        <td><strong>Expeditions</strong></td>
+        <td>Field Operations Tracker</td>
+        <td>Cruise tracks, icebreaker drift routes, expedition timelines, and scientific teams.</td>
+      </tr>
+      <tr>
+        <td><strong>Stations</strong></td>
+        <td>Observatories Directory</td>
+        <td>Permanent Arctic/Antarctic stations, atmospheric radars, and meteorological logs.</td>
+      </tr>
+      <tr>
+        <td><strong>Education</strong></td>
+        <td>Public Learning Gateway</td>
+        <td>Student Mode conceptual guides and teacher classroom curricula.</td>
+      </tr>
+      <tr>
+        <td><strong>More / Secondary</strong></td>
+        <td>Advanced Analysis & Governance</td>
+        <td>Knowledge Graph, Provenance, Live Telemetry, Community, Citizen Science, Jupyter.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- PAGE 2: CORE SEARCH & INTELLIGENCE FEATURES -->
+<div class="page">
+  <h1>2. Search, AI Intelligence & Geospatial Tools</h1>
+
+  <!-- FEATURE BOX: GLOBAL SEARCH -->
+  <div class="feature-box">
+    <div class="feature-box-header">
+      <span class="feature-box-title">Feature 1: Global Research Search & Federated Querying</span>
+      <span class="feature-box-badge">Federated Index</span>
+    </div>
+    <div class="feature-box-body">
+      <div class="feature-section">
+        <div class="feature-section-label">What It Is</div>
+        <p>A unified, multi-repository search interface federating queries across publications, gridded datasets, expeditions, scientific stations, and researcher directories.</p>
+      </div>
+      <div class="feature-section">
+        <div class="feature-section-label">How It Works</div>
+        <p>Combines dense vector semantic embeddings with sparse BM25 inverted indexing (Hybrid Mode) to allow researchers to query both precise keywords (e.g., <code>"Bedmap3"</code>, <code>"CTD Mooring"</code>) and conceptual natural language queries. Results are presented in an institutional tabular view with latency metrics.</p>
+      </div>
+      <div class="feature-section">
+        <div class="feature-section-label">How To Use It</div>
+        <ul class="step-list">
+          <li><strong>Step 1:</strong> Enter keywords into the search bar located on the homepage or via the top-right <em>Search</em> navbar button.</li>
+          <li><strong>Step 2:</strong> Use the <strong>Search Mode</strong> toggles (<code>Hybrid</code>, <code>Exact Keyword</code>, <code>Vector Semantic</code>) to refine query sensitivity.</li>
+          <li><strong>Step 3:</strong> Filter by <strong>Discipline</strong> (Sea Ice, Glaciology, Oceanography, Atmospheric) or <strong>Region</strong> (Antarctic, Arctic).</li>
+          <li><strong>Step 4:</strong> Click <strong>Inspect</strong> on any result row to immediately transition to the full entity profile.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURE BOX: ASK POLAR BEAR -->
+  <div class="feature-box">
+    <div class="feature-box-header">
+      <span class="feature-box-title">Feature 2: Ask Polar Bear (Source-Grounded AI Research Assistant)</span>
+      <span class="feature-box-badge">Zero-Hallucination Protocol</span>
+    </div>
+    <div class="feature-box-body">
+      <div class="feature-section">
+        <div class="feature-section-label">What It Is</div>
+        <p>An intelligent scientific assistant designed to synthesize complex polar phenomena exclusively from peer-reviewed literature, verified telemetry, and certified cruise logs.</p>
+      </div>
+      <div class="feature-section">
+        <div class="feature-section-label">How It Works</div>
+        <p>Employs a strict Retrieval-Augmented Generation (RAG) architecture. When a user submits an inquiry, the system retrieves verified document chunks, computes cosine similarity over domain vector embeddings, extracts empirical evidence metrics (with confidence percentages), and produces a structured 3-part response: <em>Scientific Synthesis</em>, <em>Key Empirical Findings</em>, and <em>Cited Peer-Reviewed Sources</em> with verified DOIs.</p>
+      </div>
+      <div class="feature-section">
+        <div class="feature-section-label">How To Use It</div>
+        <ul class="step-list">
+          <li><strong>Step 1:</strong> Access from the Global Search bar ("Ask Polar Bear" button) or navigate to <code>/ask-ai</code> via the "More" dropdown.</li>
+          <li><strong>Step 2:</strong> Select from curated preset scientific inquiries or type a freeform polar science question.</li>
+          <li><strong>Step 3:</strong> Review the synthesized consensus text, empirical evidence metrics, and confidence intervals.</li>
+          <li><strong>Step 4:</strong> Click on linked citations to copy verified DOIs or jump directly to the underlying raw NetCDF dataset.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURE BOX: POLAR INTELLIGENCE MAP -->
+  <div class="feature-box">
+    <div class="feature-box-header">
+      <span class="feature-box-title">Feature 3: Polar Intelligence Map (Geospatial Workbench)</span>
+      <span class="feature-box-badge">NSIDC Stereographic</span>
+    </div>
+    <div class="feature-box-body">
+      <div class="feature-section">
+        <div class="feature-section-label">What It Is</div>
+        <p>An interactive, dual-hemisphere geospatial workbench providing high-latitude visualization of operational stations, vessel drift tracks, automated sensors, and oceanographic buoys.</p>
+      </div>
+      <div class="feature-section">
+        <div class="feature-section-label">How It Works</div>
+        <p>Renders true polar projections using polar stereographic coordinate mathematics centered on 90°S (Antarctica) and 90°N (Arctic). Incorporates dynamic layer toggles for multi-sensor AMSR2 sea-ice extents, isothermal thermal fields, and sub-surface CTD moorings. Hovering dynamically computes geographic latitude and longitude coordinates.</p>
+      </div>
+      <div class="feature-section">
+        <div class="feature-section-label">How To Use It</div>
+        <ul class="step-list">
+          <li><strong>Step 1:</strong> Click <strong>Polar Map</strong> in the primary navbar.</li>
+          <li><strong>Step 2:</strong> Switch between <strong>Antarctic (90°S)</strong>, <strong>Arctic (90°N)</strong>, and <strong>Global Corridor</strong> projections using the top switcher.</li>
+          <li><strong>Step 3:</strong> Use the left <strong>Map Layers & Telemetry</strong> panel to toggle layers: Expeditions, Stations, Datasets, Sea Ice, Temperature, Ocean Obs, and Live Sensors.</li>
+          <li><strong>Step 4:</strong> Click any station marker (e.g., McMurdo, Concordia, Ny-Ålesund) to inspect real-time meteorological telemetry and active research projects.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 3: TELEMETRY, DATASETS & EXPEDITIONS -->
+<div class="page">
+  <h1>3. Telemetry, Datasets & Field Operations</h1>
+
+  <!-- FEATURE BOX: LIVE POLAR DATA -->
+  <div class="feature-box">
+    <div class="feature-box-header">
+      <span class="feature-box-title">Feature 4: Live Polar Data Center & Anomaly Detection</span>
+      <span class="feature-box-badge">Streaming Ingestion</span>
+    </div>
+    <div class="feature-box-body">
+      <div class="feature-section">
+        <div class="feature-section-label">What It Is</div>
+        <p>A real-time environmental monitoring center tracking Automated Weather Stations (AWS), drifting sea buoys, and moored CTD arrays across both polar caps.</p>
+      </div>
+      <div class="feature-section">
+        <div class="feature-section-label">How It Works</div>
+        <p>Simulates continuous ingestion via WMO Global Telecommunication System (GTS) and Iridium satellite links. The system maintains two simultaneous data pipelines: <strong>Raw Telemetry</strong> (unfiltered data containing sensor spikes) and <strong>Cleaned Data (QA/QC)</strong> (where spike filters, median smoothing, and quality control flags have been applied). An integrated anomaly detection engine continuously compares current readings against a 30-year historical baseline (+4.8σ envelope).</p>
+      </div>
+      <div class="feature-section">
+        <div class="feature-section-label">How To Use It</div>
+        <ul class="step-list">
+          <li><strong>Step 1:</strong> Access <strong>Live Polar Data</strong> via the homepage monitoring strip or under the "More" dropdown.</li>
+          <li><strong>Step 2:</strong> Toggle between <strong>Cleaned Data (QA/QC)</strong> and <strong>Raw Telemetry</strong> to compare raw sensor noise with validated readings.</li>
+          <li><strong>Step 3:</strong> Inspect the top <strong>Anomaly Alert Banner</strong> (e.g., Concordia AWS +14.2°C thermal surge detection).</li>
+          <li><strong>Step 4:</strong> Click on individual sensors in the sensor roster to inspect live time-series charts, standard deviations, and battery voltages.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURE BOX: SCIENTIFIC DATASETS -->
+  <div class="feature-box">
+    <div class="feature-box-header">
+      <span class="feature-box-title">Feature 5: Scientific Datasets Repository (CF-1.8 & NetCDF-4)</span>
+      <span class="feature-box-badge">Open Access · DOI</span>
+    </div>
+    <div class="feature-box-body">
+      <div class="feature-section">
+        <div class="feature-section-label">What It Is</div>
+        <p>An open-access data repository hosting multidimensional climate grids, bed topography models, ice-core records, and aerosol observations.</p>
+      </div>
+      <div class="feature-section">
+        <div class="feature-section-label">How It Works</div>
+        <p>All datasets are indexed according to Climate and Forecast (CF-1.8) conventions. Each entry includes spatial coordinate bounds (lat/lon), variable lists with standard physical units (m, °C, kg/m³), temporal resolution, license designations (CC-BY 4.0), and persistent DataCite DOIs. Pre-rendered spatial previews allow instant visual inspection of raster values.</p>
+      </div>
+      <div class="feature-section">
+        <div class="feature-section-label">How To Use It</div>
+        <ul class="step-list">
+          <li><strong>Step 1:</strong> Click <strong>Data</strong> in the primary navbar.</li>
+          <li><strong>Step 2:</strong> Select a dataset from the left list (e.g., <em>Bedmap3 Antarctic Bed Topography</em>, <em>Daily Sea-Ice Concentration</em>).</li>
+          <li><strong>Step 3:</strong> Navigate through the four standard tabs: <strong>Overview</strong> (metadata & citation), <strong>Data</strong> (tabular record view), <strong>Visualization</strong> (spatial grid preview), and <strong>Provenance</strong> (ingestion audit).</li>
+          <li><strong>Step 4:</strong> Use the <strong>Copy DOI</strong> button for publication references, or click <strong>Download NetCDF</strong> to export files.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURE BOX: EXPEDITIONS -->
+  <div class="feature-box">
+    <div class="feature-box-header">
+      <span class="feature-box-title">Feature 6: Expeditions & Field Operations Tracking</span>
+      <span class="feature-box-badge">Operations & Logistics</span>
+    </div>
+    <div class="feature-box-body">
+      <div class="feature-section">
+        <div class="feature-section-label">What It Is</div>
+        <p>A comprehensive operational registry documenting polar research voyages, icebreaker drifts, deep field camps, and robotic sub-ice surveys.</p>
+      </div>
+      <div class="feature-section">
+        <div class="feature-section-label">How It Works</div>
+        <p>Maintains structured expedition dossiers connecting vessel callsigns, voyage waypoints, chief scientists, participating international institutes, and direct links to all datasets and papers generated by the mission.</p>
+      </div>
+      <div class="feature-section">
+        <div class="feature-section-label">How To Use It</div>
+        <ul class="step-list">
+          <li><strong>Step 1:</strong> Click <strong>Expeditions</strong> in the navbar.</li>
+          <li><strong>Step 2:</strong> Select an expedition (e.g., <em>MOSAiC Arctic Drift</em>, <em>ITGC Thwaites Glacier</em>, <em>Weddell Sea Gyre</em>).</li>
+          <li><strong>Step 3:</strong> Explore the 8 structured tabs: <strong>Overview</strong>, <strong>Route</strong> (waypoint table), <strong>Timeline</strong> (milestones), <strong>Team</strong> (scientists & roles), <strong>Datasets</strong>, <strong>Publications</strong>, <strong>Media</strong>, and <strong>Provenance</strong>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 4: PROVENANCE, KNOWLEDGE GRAPH & REPRODUCIBILITY -->
+<div class="page">
+  <h1>4. Provenance, Knowledge Graph & Analysis</h1>
+
+  <!-- FEATURE BOX: DATA PROVENANCE -->
+  <div class="feature-box">
+    <div class="feature-box-header">
+      <span class="feature-box-title">Feature 7: FAIR Data Provenance & Cryptographic Lineage</span>
+      <span class="feature-box-badge">W3C PROV-O · SHA-256</span>
+    </div>
+    <div class="feature-box-body">
+      <div class="feature-section">
+        <div class="feature-section-label">What It Is</div>
+        <p>An auditable data lifecycle tracker certifying scientific reproducibility from initial sensor acquisition to final published journal paper.</p>
+      </div>
+      <div class="feature-section">
+        <div class="feature-section-label">How It Works</div>
+        <p>Enforces a mandatory 6-stage lifecycle stepper: <code>Observation → Raw Dataset → Quality Check → Processed Dataset → Analysis → Publication</code>. Every stage records exact timestamps, responsible agents, software versions, processing scripts, and immutable SHA-256 cryptographic hashes, enabling peer reviewers to verify that raw data has not been manipulated.</p>
+      </div>
+      <div class="feature-section">
+        <div class="feature-section-label">How To Use It</div>
+        <ul class="step-list">
+          <li><strong>Step 1:</strong> Select <strong>Data Provenance</strong> under the "More" navbar dropdown or from any dataset/expedition page.</li>
+          <li><strong>Step 2:</strong> Click through the 6 lifecycle stages to inspect processing transformations and QA algorithms.</li>
+          <li><strong>Step 3:</strong> Click <strong>Verify SHA-256 Hash</strong> to run an automated cryptographic integrity validation test.</li>
+          <li><strong>Step 4:</strong> Click <strong>View Blockchain Receipt</strong> to inspect immutable timestamped verification certificates.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURE BOX: KNOWLEDGE GRAPH -->
+  <div class="feature-box">
+    <div class="feature-box-header">
+      <span class="feature-box-title">Feature 8: Polar Science Knowledge Graph Explorer</span>
+      <span class="feature-box-badge">Graph Topology</span>
+    </div>
+    <div class="feature-box-body">
+      <div class="feature-section">
+        <div class="feature-section-label">What It Is</div>
+        <p>An interactive topological graph mapping cross-disciplinary scientific relationships across researchers, expeditions, geography, datasets, and publications.</p>
+      </div>
+      <div class="feature-section">
+        <div class="feature-section-label">How It Works</div>
+        <p>Builds a directed acyclic graph (DAG) where nodes represent discrete polar entities and edges represent relationships (e.g., <em>"Conducted By"</em>, <em>"Deploys"</em>, <em>"Derives"</em>, <em>"Authored"</em>). Selecting any node dynamically computes and highlights connected relational sub-networks.</p>
+      </div>
+      <div class="feature-section">
+        <div class="feature-section-label">How To Use It</div>
+        <ul class="step-list">
+          <li><strong>Step 1:</strong> Access <strong>Knowledge Graph</strong> from the homepage or under the "More" dropdown.</li>
+          <li><strong>Step 2:</strong> Use the top filter buttons to isolate entity classes: <em>ALL</em>, <em>Researcher</em>, <em>Expedition</em>, <em>Location</em>, <em>Dataset</em>, or <em>Publication</em>.</li>
+          <li><strong>Step 3:</strong> Click any circular node on the SVG canvas to view its relational dossier and metadata in the right inspector panel.</li>
+          <li><strong>Step 4:</strong> Click <strong>Inspect Full Record</strong> to jump directly to the comprehensive view of that entity.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURE BOX: JUPYTER COMPUTATIONAL WORKSPACE -->
+  <div class="feature-box">
+    <div class="feature-box-header">
+      <span class="feature-box-title">Feature 9: Collaborative Computational Workspace (Jupyter HPC)</span>
+      <span class="feature-box-badge">Reproducible Python Container</span>
+    </div>
+    <div class="feature-box-body">
+      <div class="feature-section">
+        <div class="feature-section-label">What It Is</div>
+        <p>A cloud-hosted Jupyter computational environment that co-locates open-source scientific code directly alongside high-latitude data repositories.</p>
+      </div>
+      <div class="feature-section">
+        <div class="feature-section-label">How It Works</div>
+        <p>Connects to containerized compute clusters pre-configured with fundamental scientific Python libraries: <code>xarray</code> (for multi-dimensional NetCDF grids), <code>cartopy</code> (for polar stereographic projections), <code>gsw</code> (TEOS-10 oceanographic equations), and <code>matplotlib</code>. Notebooks access datasets via local file descriptors without needing external data downloads.</p>
+      </div>
+      <div class="feature-section">
+        <div class="feature-section-label">How To Use It</div>
+        <ul class="step-list">
+          <li><strong>Step 1:</strong> Navigate to <strong>Jupyter Workspace</strong> under the "More" dropdown.</li>
+          <li><strong>Step 2:</strong> Browse the notebook catalog on the left (e.g., <em>amundsen_ice_thinning.ipynb</em>, <em>sea_ice_trend_amsr2.ipynb</em>).</li>
+          <li><strong>Step 3:</strong> Click <strong>Run All Cells (HPC)</strong> in the header to execute the notebook across the compute cluster.</li>
+          <li><strong>Step 4:</strong> Review real-time console stdout outputs, including calculated warming rates and provenance verification hashes.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 5: EDUCATION, CITIZEN SCIENCE & GOVERNANCE -->
+<div class="page">
+  <h1>5. Education, Community & Governance</h1>
+
+  <!-- FEATURE BOX: EDUCATION -->
+  <div class="feature-box">
+    <div class="feature-box-header">
+      <span class="feature-box-title">Feature 10: Polar Science Education Portal</span>
+      <span class="feature-box-badge">K-12 & University Curricula</span>
+    </div>
+    <div class="feature-box-body">
+      <div class="feature-section">
+        <div class="feature-section-label">What It Is</div>
+        <p>A dual-audience educational gateway translating complex cryospheric and climate phenomena for students and classroom instructors.</p>
+      </div>
+      <div class="feature-section">
+        <div class="feature-section-label">How It Works</div>
+        <p>Provides two dedicated experiences: <strong>Student Mode</strong> presents simplified, jargon-free explanations of core concepts (e.g., Albedo Effect, Sea Ice vs. Icebergs, Ocean Conveyor Belts, Wildlife Adaptations). <strong>Teacher Resources</strong> provides peer-reviewed high school and undergraduate lab lesson plans incorporating authentic open-access datasets from Polar Bear archives.</p>
+      </div>
+      <div class="feature-section">
+        <div class="feature-section-label">How To Use It</div>
+        <ul class="step-list">
+          <li><strong>Step 1:</strong> Click <strong>Education</strong> in the main navbar.</li>
+          <li><strong>Step 2:</strong> Use the top mode switch to toggle between <strong>Student Mode</strong> and <strong>Teacher Resources</strong>.</li>
+          <li><strong>Step 3:</strong> In Student Mode, select topics on the left to read verified scientific summaries, key facts, and interactive tips.</li>
+          <li><strong>Step 4:</strong> In Teacher Resources, click <strong>Download Lesson Materials (.ZIP)</strong> to retrieve lab worksheets, Python notebook templates, and CSV datasets.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURE BOX: CITIZEN SCIENCE -->
+  <div class="feature-box">
+    <div class="feature-box-header">
+      <span class="feature-box-title">Feature 11: Citizen Science & Quarantined Staging Pool</span>
+      <span class="feature-box-badge">Quarantined Consensus</span>
+    </div>
+    <div class="feature-box-body">
+      <div class="feature-section">
+        <div class="feature-section-label">What It Is</div>
+        <p>A public engagement framework allowing volunteers to classify satellite imagery, track wildlife colonies, and annotate ice features.</p>
+      </div>
+      <div class="feature-section">
+        <div class="feature-section-label">How It Works</div>
+        <p>Maintains a strict <strong>Scientific Separation Protocol</strong>: Public annotations remain in a quarantined staging pool. Contributions only graduate into verified scientific repositories after achieving multi-user statistical consensus (&gt;95% agreement) and receiving formal sign-off from credentialed institutional scientists.</p>
+      </div>
+      <div class="feature-section">
+        <div class="feature-section-label">How To Use It</div>
+        <ul class="step-list">
+          <li><strong>Step 1:</strong> Select <strong>Citizen Science</strong> under the "More" navbar dropdown.</li>
+          <li><strong>Step 2:</strong> Choose an active mission: <em>Weddell Seal Haul-Out Counting</em>, <em>Iceberg Calving Tracking</em>, or <em>Melt Pond Detection</em>.</li>
+          <li><strong>Step 3:</strong> Use interactive click-to-annotate tools to tag features on high-resolution satellite imagery.</li>
+          <li><strong>Step 4:</strong> Submit verified batches to earn researcher engagement points credited to your profile.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURE BOX: REVIEW WORKFLOW & ADMIN -->
+  <div class="feature-box">
+    <div class="feature-box-header">
+      <span class="feature-box-title">Feature 12: Review Workflow & Platform Administration</span>
+      <span class="feature-box-badge">FAIR Audit & SLURM Governance</span>
+    </div>
+    <div class="feature-box-body">
+      <div class="feature-section">
+        <div class="feature-section-label">What It Is</div>
+        <p>Governance workspaces for peer review verification and infrastructural telemetry monitoring.</p>
+      </div>
+      <div class="feature-section">
+        <div class="feature-section-label">How It Works</div>
+        <p>The <strong>Review Workflow</strong> guides submissions through a 4-stage quality gate: <code>Submitted → Under Review → Verified → Published</code> with FAIR audits checking metadata compliance, NetCDF standards, and DOI minting. The <strong>Admin Dashboard</strong> tracks server cluster health, SLURM compute node usage, Iridium satellite receiver uptime (99.99%), and storage utilization.</p>
+      </div>
+      <div class="feature-section">
+        <div class="feature-section-label">How To Use It</div>
+        <ul class="step-list">
+          <li><strong>Step 1:</strong> Select <strong>Review Queue</strong> or <strong>Admin Dashboard</strong> from the "More" menu or footer links.</li>
+          <li><strong>Step 2:</strong> In the review queue, inspect dataset submissions, audit compliance scores, and approve stage transitions.</li>
+          <li><strong>Step 3:</strong> In the admin console, review real-time ingestion rates (packets/sec) and cluster node loads.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 6: PRACTICAL WORKFLOWS & STANDARDS REFERENCE -->
+<div class="page">
+  <h1>6. Practical Workflows & Technical Reference</h1>
+
+  <h2>6.1 Typical User Workflows</h2>
+
+  <h3>Workflow A: Investigating Ocean Warming Beneath Ice Shelves</h3>
+  <ol>
+    <li>Open the <strong>Global Search</strong> and query <code>"Amundsen Sea basal melting"</code> or select <em>Glaciology</em> filter.</li>
+    <li>Use <strong>Ask Polar Bear</strong> to summarize recent findings on modified Circumpolar Deep Water (mCDW) intrusion.</li>
+    <li>Switch to the <strong>Polar Intelligence Map</strong>, select the <em>Antarctic (90°S)</em> projection, and activate the <em>Ocean Obs</em> and <em>Live Sensors</em> layers to inspect mooring temperatures.</li>
+    <li>Navigate to <strong>Datasets</strong> to download the verified NetCDF-4 time-series, copying the official DataCite DOI.</li>
+    <li>Inspect the <strong>Data Provenance</strong> tab to confirm the SHA-256 hash and W3C PROV-O audit trail.</li>
+  </ol>
+
+  <h3>Workflow B: Educational Curriculum Preparation</h3>
+  <ol>
+    <li>Navigate to the <strong>Education Portal</strong> and switch to <strong>Teacher Resources</strong>.</li>
+    <li>Select the curriculum unit: <em>"Antarctic Ice Shelves & Sea Level Rise"</em> (Grades 9–12).</li>
+    <li>Click <strong>Download Lesson Materials (.ZIP)</strong> to access student lab worksheets and real Bedmap3 CSV extracts.</li>
+    <li>Direct students to <strong>Student Mode</strong> to study the interactive explanations of sea ice dynamics and albedo feedback.</li>
+  </ol>
+
+  <h2>6.2 Standards & Technical Acronyms Reference</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 20%;">Acronym / Standard</th>
+        <th style="width: 30%;">Full Name</th>
+        <th style="width: 50%;">Role in POLAR BEAR Platform</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>CF-1.8</strong></td>
+        <td>Climate & Forecast Metadata Convention</td>
+        <td>Standardizes NetCDF variable names, dimensions, and physical SI units for universal GIS interoperability.</td>
+      </tr>
+      <tr>
+        <td><strong>W3C PROV-O</strong></td>
+        <td>W3C Provenance Ontology</td>
+        <td>Formal data model describing the entities, activities, and agents involved in producing research artifacts.</td>
+      </tr>
+      <tr>
+        <td><strong>FAIR</strong></td>
+        <td>Findable, Accessible, Interoperable, Reusable</td>
+        <td>Guiding data stewardship principles enforced across all datasets and published literature.</td>
+      </tr>
+      <tr>
+        <td><strong>AWS</strong></td>
+        <td>Automated Weather Station</td>
+        <td>Autonomous polar meteorological station streaming temperature, wind, and pressure via satellite.</td>
+      </tr>
+      <tr>
+        <td><strong>CTD</strong></td>
+        <td>Conductivity, Temperature, Depth</td>
+        <td>Oceanographic sensor package measuring salinity and temperature profiles across the water column.</td>
+      </tr>
+      <tr>
+        <td><strong>mCDW</strong></td>
+        <td>Modified Circumpolar Deep Water</td>
+        <td>Dense, relatively warm (+0.4°C to +1.2°C) ocean water mass implicated in basal ice-shelf melting.</td>
+      </tr>
+      <tr>
+        <td><strong>AMSR2</strong></td>
+        <td>Advanced Microwave Scanning Radiometer 2</td>
+        <td>Satellite instrument measuring daily high-latitude sea-ice concentration and extent.</td>
+      </tr>
+      <tr>
+        <td><strong>PANGAEA</strong></td>
+        <td>Data Publisher for Earth & Environmental Science</td>
+        <td>Federated archival partner repository integrated into POLAR BEAR federated search.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <div class="callout-title">Support and Repository Inquiries</div>
+    For data ingestion requests, WMO GTS telemetry integrations, or API keys, contact the Polar Bear Scientific Consortium at <code>data@polarbear-science.org</code> or visit the repository at <a href="https://github.com/EdlaAbhishek/SIH.git" style="color: #2F6F95; text-decoration: underline;">https://github.com/EdlaAbhishek/SIH.git</a>.
+  </div>
+</div>
+
+</body>
+</html>
