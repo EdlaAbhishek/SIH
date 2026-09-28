@@ -1,0 +1,363 @@
+/* POLAR BEAR - Global Design System */
+/* STRICT RULE: SOLID COLORS ONLY. ABSOLUTELY NO GRADIENTS. */
+
+:root {
+  /* Color Palette */
+  --deep-navy: #0B1F33;
+  --dark-blue: #123B5D;
+  --arctic-blue: #2F6F95;
+  --ice-white: #F7FAFC;
+  --white: #FFFFFF;
+  --pale-ice: #E8F1F5;
+  --dark-text: #16232E;
+  --slate: #526474;
+  --border: #D8E1E7;
+
+  /* Status Tokens (Solid Only) */
+  --status-verified: #0B6B40;
+  --status-alert: #A82020;
+  --status-live: #0E7490;
+
+  /* Typography Scale */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--dark-text);
+  background-color: var(--ice-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--ice-white);
+  color: var(--dark-text);
+  overflow-x: hidden;
+  font-size: 15px;
+}
+
+/* Typography Hierarchy */
+h1 {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--deep-navy);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--deep-navy);
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--deep-navy);
+}
+
+p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--slate);
+}
+
+.text-secondary {
+  font-size: 14px;
+  color: var(--slate);
+}
+
+.text-metadata {
+  font-size: 12px;
+  color: var(--slate);
+  font-family: 'IBM Plex Mono', 'SFMono-Regular', Consolas, Menlo, monospace;
+}
+
+.font-mono {
+  font-family: 'IBM Plex Mono', 'SFMono-Regular', Consolas, Menlo, monospace;
+}
+
+a {
+  color: var(--arctic-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Global Page Layout Container */
+.page-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 32px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .page-container {
+    padding: 0 16px;
+  }
+}
+
+/* Three Standard Button Types Only */
+.btn-primary {
+  height: 40px;
+  padding: 0 20px;
+  background-color: var(--deep-navy);
+  color: #FFFFFF;
+  border: 1px solid var(--deep-navy);
+  border-radius: 2px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--dark-blue);
+  border-color: var(--dark-blue);
+  text-decoration: none;
+}
+
+.btn-secondary {
+  height: 40px;
+  padding: 0 20px;
+  background-color: var(--white);
+  color: var(--dark-text);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--ice-white);
+  border-color: var(--deep-navy);
+  text-decoration: none;
+}
+
+.btn-tertiary {
+  height: auto;
+  padding: 0;
+  background: transparent;
+  color: var(--arctic-blue);
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.btn-tertiary:hover {
+  color: var(--deep-navy);
+  text-decoration: underline;
+}
+
+/* Button Small Size Modifier */
+.btn-sm {
+  height: 32px;
+  padding: 0 12px;
+  font-size: 13px;
+}
+
+/* Standard Scientific Badges & Tags (Solid Only) */
+.badge-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background-color: var(--pale-ice);
+  color: var(--dark-blue);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.badge-tag.navy {
+  background-color: var(--deep-navy);
+  color: #FFFFFF;
+  border-color: var(--deep-navy);
+}
+
+.badge-tag.arctic {
+  background-color: var(--arctic-blue);
+  color: #FFFFFF;
+  border-color: var(--arctic-blue);
+}
+
+.badge-tag.alert {
+  background-color: #FDF2F2;
+  color: var(--status-alert);
+  border-color: #F8B4B4;
+}
+
+.badge-tag.live {
+  background-color: #ECFDF5;
+  color: var(--status-verified);
+  border-color: #A7F3D0;
+}
+
+/* Institutional Scientific Tables */
+.sci-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  text-align: left;
+}
+
+.sci-table th {
+  background-color: var(--pale-ice);
+  color: var(--dark-text);
+  font-weight: 600;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.sci-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--dark-text);
+  background-color: var(--white);
+}
+
+.sci-table tr:hover td {
+  background-color: #FAFBFD;
+}
+
+/* Tabs System */
+.sci-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  background-color: var(--ice-white);
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.sci-tab-btn {
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--slate);
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.sci-tab-btn:hover {
+  color: var(--deep-navy);
+}
+
+.sci-tab-btn.active {
+  color: var(--deep-navy);
+  font-weight: 600;
+  border-bottom: 2px solid var(--deep-navy);
+  background-color: var(--white);
+}
+
+/* Panel Containers */
+.panel-border {
+  border: 1px solid var(--border);
+  background-color: var(--white);
+  border-radius: 2px;
+}
+
+.panel-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  background-color: var(--pale-ice);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel-body {
+  padding: 24px;
+}
+
+/* Status Indicators */
+.live-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--status-verified);
+  border-radius: 50%;
+}
+
+.live-indicator.alert {
+  background-color: var(--status-alert);
+}
+
+/* Standardized Internal Page Header Layout */
+.internal-page-header {
+  background-color: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 32px 0;
+  margin-bottom: 32px;
+}
+
+.internal-page-header .header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ice-white);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--slate);
+}
